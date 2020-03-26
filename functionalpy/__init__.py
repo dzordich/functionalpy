@@ -1,1 +1,1 @@
-from .combinators import thrush, tap, pipe, compose
+from .functions import thrush, tap, pipe, compose

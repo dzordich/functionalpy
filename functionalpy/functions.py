@@ -47,18 +47,3 @@ def compose(*functions):
     @rtype: function
     """
     return pipe(*reversed(functions))
-
-
-""" Examples """
-
-add = lambda x: x + 1
-square = lambda x: x * x
-
-
-pipePrint = tap(print)
-
-square_and_inc = pipe(square, add)
-assert pipePrint(square_and_inc(2)) == 5
-
-comp_square_and_inc = compose(add, square)
-assert pipePrint(comp_square_and_inc(2)) == 5
