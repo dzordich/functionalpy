@@ -1,13 +1,8 @@
 import functools
-from typing import List
+from typing import Iterable, List
 
-from .sequences import listfrom
 from ._utils import _getparams
 from ._types import F, F1
-
-
-def _apply(f, y: List):
-    return f(*y)
 
 
 def _curryN(arity):
@@ -28,15 +23,24 @@ def _curryN(arity):
     return _curry
 
 
-def apply(f, y=None):
+def _apply(f, y: Iterable):
     """
     Applies function M{f} to argument list M{y}
+    """
+    return f(*y)
+
+
+def apply(f):
+    """
+    Returns a function that when called with argument list M{y},
+    applies M{y} to M{f}.
     @type f: function
-    @type y: list
-    @rtype: function
     """
 
-    return _curryN(2)(_apply)(listfrom(f, y))
+    def _ap(y: List):
+        return _apply(f, y)
+
+    return _ap
 
 
 def thrush(x, f):
@@ -82,8 +86,9 @@ def compose(*fns):
     Performs left-to-right function composition.
     The last argument can take any number of arguments, but the rest should be unary.
     @type fns: function
+    @rtype: function
     """
-    return apply(pipe)(reversed(fns))
+    return _apply(pipe, reversed(fns))
 
 
 def curry(f: F) -> F1:
@@ -101,11 +106,3 @@ def curry(f: F) -> F1:
         return curry(functools.partial(f, *args, **kwargs))
 
     return _curry
-
-
-def add3(a, b, c=1):
-    return a + b + c
-
-
-addToOne = curry(add3)
-print(addToOne(1))
