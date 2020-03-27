@@ -2,4 +2,5 @@ import typing
 
 Function = typing.Callable[..., typing.Any]
 
-F1 = typing.Callable[..., Function]
+F = typing.Callable[[typing.Any, typing.Any], typing.Any]
+F1 = typing.Callable[[typing.Any], typing.Callable[[typing.Any], typing.Any]]
