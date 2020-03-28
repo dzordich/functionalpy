@@ -7,7 +7,7 @@ setup(
     description="Utility package for functional programming in Python",
     author="David Zordich",
     author_email="dzordich@gmail.com",
-    url="https://gitlab.com/metametrics/mmauth0",
+    url="https://github.com/dzordich/functionalpy",
     packages=["functionalpy"],
     classifiers=["Programming Language :: Python :: 3",],
     python_requires=">=3.0",
