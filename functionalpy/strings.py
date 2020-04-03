@@ -3,4 +3,3 @@ def join(separator: str):
         return separator.join(arr)
 
     return _join
-
