@@ -106,3 +106,10 @@ def curry(f: F) -> F1:
         return curry(functools.partial(f, *args, **kwargs))
 
     return _curry
+
+
+def flip(f):
+    def _flipped(*args, **kwargs):
+        return _apply(f, reversed(args))
+
+    return _flipped
