@@ -1,5 +1,6 @@
 # functionalpy #
 
+![Build n' Test](https://github.com/dzordich/functionalpy/workflows/Build%20n'%20Test/badge.svg?branch=master)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Functionalpy is a toolkit for functional programming in Python. 
